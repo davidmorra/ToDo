@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ToDoListItem {
+class ToDoListItem: NSObject, Codable {
     var text = ""
     var isDone = false
 }

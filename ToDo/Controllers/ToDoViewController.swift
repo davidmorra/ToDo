@@ -7,10 +7,9 @@
 
 import UIKit
 
-class ToDoViewController: UITableViewController, AddTaskViewControllerDelegate {
+class ToDoViewController: UITableViewController, ItemDetailViewControllerDelegate {
     
     var items = [ToDoListItem]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,6 @@ class ToDoViewController: UITableViewController, AddTaskViewControllerDelegate {
         items.append(item2)
         
         setUpNavigation()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,17 +32,40 @@ class ToDoViewController: UITableViewController, AddTaskViewControllerDelegate {
         navigationItem.largeTitleDisplayMode = .always
     }
     
+    //MARK: - File Path
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Todo.plist")
+    }
+    
+    //MARK: - Saving data to a File
+    func saveToDoListItems() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(items)
+            try data.write(to: dataFilePath(), options: .atomic)
+            
+        } catch {
+            print("Error encoding item array: \(error.localizedDescription)")
+        }
+    }
+    
     //MARK: - Setup work
     func setUpNavigation() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addButtonTapped))
     }
     
     @objc func addButtonTapped() {
-        let addTaskViewController = storyboard?.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
-        addTaskViewController.delegate = self
-        addTaskViewController.title = "Add a task"
+        let ItemDetailViewController = storyboard?.instantiateViewController(withIdentifier: "AddTaskViewController") as! ItemDetailViewController
+        ItemDetailViewController.delegate = self
+        ItemDetailViewController.title = "Add a task"
         
-        navigationController?.pushViewController(addTaskViewController, animated: true)
+        navigationController?.pushViewController(ItemDetailViewController, animated: true)
     }
     
     // MARK: - Table view data source
@@ -55,7 +76,7 @@ class ToDoViewController: UITableViewController, AddTaskViewControllerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath)
         
-        cell.accessoryType = .disclosureIndicator
+        cell.accessoryType = .detailDisclosureButton
         
         // cell text
         let label = cell.viewWithTag(1000) as! UILabel
@@ -69,23 +90,24 @@ class ToDoViewController: UITableViewController, AddTaskViewControllerDelegate {
         return cell
     }
     
+    
+    // Tap on cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let item = items[indexPath.row]
         item.isDone.toggle()
         
+        saveToDoListItems()
+        
         tableView.reloadRows(at: [indexPath], with: .automatic)
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let addTaskViewController = storyboard?.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
+        let addTaskViewController = storyboard?.instantiateViewController(withIdentifier: "AddTaskViewController") as! ItemDetailViewController
         addTaskViewController.title = "Edit Item"
         addTaskViewController.delegate = self
         addTaskViewController.textFieldOutlet?.text = "\(items[indexPath.row].text)"
-        
-        print(items[indexPath.row].text)
+        addTaskViewController.itemToEdit = items[indexPath.row]
         
         navigationController?.pushViewController(addTaskViewController, animated: true)
     }
@@ -96,20 +118,37 @@ class ToDoViewController: UITableViewController, AddTaskViewControllerDelegate {
         
         items.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        saveToDoListItems()
     }
 
     //MARK: - Protocol methods
-    func addTaskViewControllerDidCancel(_ controller: AddTaskViewController) {
+    func ItemDetailViewController(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated: true)
     }
     
-    func addTaskViewController(_ controller: AddTaskViewController, didFinishAdding item: ToDoListItem) {
+    func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ToDoListItem) {
         let index = items.count
         let indexPath = IndexPath(row: index, section: 0)
         
         items.append(item)
         tableView.insertRows(at: [indexPath], with: .automatic)
         
+        saveToDoListItems()
+        
         navigationController?.popViewController(animated: true)
     }
+    
+    func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ToDoListItem) {
+        
+        if let index = items.firstIndex(where: { $0.text == item.text }) {
+            let indexPath = IndexPath(row: index, section: 0)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+
+        saveToDoListItems()
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
