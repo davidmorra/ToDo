@@ -14,16 +14,9 @@ class ToDoViewController: UITableViewController, ItemDetailViewControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let item1 = ToDoListItem()
-        item1.text = "Hello"; item1.isDone = true
-        items.append(item1)
-        
-        let item2 = ToDoListItem()
-        item2.text = "Hello"; item2.isDone = false
-
-        items.append(item2)
-        
         setUpNavigation()
+        
+        loadToDoListItems()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +35,7 @@ class ToDoViewController: UITableViewController, ItemDetailViewControllerDelegat
         return documentsDirectory().appendingPathComponent("Todo.plist")
     }
     
-    //MARK: - Saving data to a File
+    //MARK: Saving data to a File
     func saveToDoListItems() {
         let encoder = PropertyListEncoder()
         
@@ -52,6 +45,21 @@ class ToDoViewController: UITableViewController, ItemDetailViewControllerDelegat
             
         } catch {
             print("Error encoding item array: \(error.localizedDescription)")
+        }
+    }
+    
+    //MARK: Load the data
+    func loadToDoListItems() {
+        let path = dataFilePath()
+        
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            
+            do {
+                items = try decoder.decode([ToDoListItem].self, from: data)
+            } catch {
+                print("Error decoding item array: \(error.localizedDescription)")
+            }
         }
     }
     
