@@ -14,7 +14,7 @@
 		FAC715A5276CD8B500A2660A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC715A3276CD8B500A2660A /* LaunchScreen.storyboard */; };
 		FAC715AD276CD9B700A2660A /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715AC276CD9B700A2660A /* ToDoViewController.swift */; };
 		FAC715AF276CF95200A2660A /* ToDoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715AE276CF95200A2660A /* ToDoListItem.swift */; };
-		FAC715B1276D10BA00A2660A /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715B0276D10BA00A2660A /* AddTaskViewController.swift */; };
+		FAC715B1276D10BA00A2660A /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715B0276D10BA00A2660A /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		FAC715A6276CD8B500A2660A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC715AC276CD9B700A2660A /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		FAC715AE276CF95200A2660A /* ToDoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItem.swift; sourceTree = "<group>"; };
-		FAC715B0276D10BA00A2660A /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		FAC715B0276D10BA00A2660A /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC715AC276CD9B700A2660A /* ToDoViewController.swift */,
-				FAC715B0276D10BA00A2660A /* AddTaskViewController.swift */,
+				FAC715B0276D10BA00A2660A /* ItemDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -156,7 +156,7 @@
 				FAC715AD276CD9B700A2660A /* ToDoViewController.swift in Sources */,
 				FAC715AF276CF95200A2660A /* ToDoListItem.swift in Sources */,
 				FAC7159B276CD8B200A2660A /* SceneDelegate.swift in Sources */,
-				FAC715B1276D10BA00A2660A /* AddTaskViewController.swift in Sources */,
+				FAC715B1276D10BA00A2660A /* ItemDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

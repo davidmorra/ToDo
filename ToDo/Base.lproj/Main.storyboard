@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NQp-T7-OHd">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,31 +11,29 @@
         <scene sceneID="qCR-eQ-qYg">
             <objects>
                 <tableViewController id="N2k-Nb-gpO" customClass="ToDoViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bJz-2V-p6D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="bJz-2V-p6D">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="toDoCell" id="q22-oN-mXc">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="toDoCell" rowHeight="52" id="q22-oN-mXc">
+                                <rect key="frame" x="20" y="31.666666030883789" width="350" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q22-oN-mXc" id="ITh-og-RM6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="52"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="A0C-wU-bEQ">
-                                            <rect key="frame" x="16" y="12" width="343" height="20"/>
+                                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bUO-5V-daZ">
+                                            <rect key="frame" x="8" y="15.999999999999998" width="334" height="20.333333333333329"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LMH-2n-lEI">
-                                                    <rect key="frame" x="0.0" y="0.5" width="20" height="19"/>
+                                                    <rect key="frame" x="0.0" y="0.99999999999999822" width="26" height="19"/>
                                                     <color key="tintColor" systemColor="linkColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="dhM-rl-Pxw"/>
-                                                        <constraint firstAttribute="height" constant="20" id="yjH-og-vtZ"/>
+                                                        <constraint firstAttribute="width" constant="26" id="Jho-WF-osm"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p56-2y-eoK">
-                                                    <rect key="frame" x="28" y="0.0" width="315" height="20"/>
+                                                    <rect key="frame" x="34" y="0.0" width="300" height="20.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -44,9 +42,9 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="A0C-wU-bEQ" firstAttribute="leading" secondItem="ITh-og-RM6" secondAttribute="leadingMargin" id="B7B-Pl-qAc"/>
-                                        <constraint firstItem="A0C-wU-bEQ" firstAttribute="centerY" secondItem="ITh-og-RM6" secondAttribute="centerY" id="P2U-es-z8t"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="A0C-wU-bEQ" secondAttribute="trailing" id="XRh-jl-uZN"/>
+                                        <constraint firstItem="bUO-5V-daZ" firstAttribute="centerY" secondItem="ITh-og-RM6" secondAttribute="centerY" id="dbP-Pj-Ivu"/>
+                                        <constraint firstItem="bUO-5V-daZ" firstAttribute="leading" secondItem="ITh-og-RM6" secondAttribute="leading" constant="8" id="hkv-9O-Ysf"/>
+                                        <constraint firstAttribute="trailing" secondItem="bUO-5V-daZ" secondAttribute="trailing" constant="8" id="wHN-gd-RGm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -63,26 +61,26 @@
             </objects>
             <point key="canvasLocation" x="502" y="-83"/>
         </scene>
-        <!--Add Task View Controller-->
+        <!--Item Detail View Controller-->
         <scene sceneID="erv-Ii-NQC">
             <objects>
-                <tableViewController storyboardIdentifier="AddTaskViewController" id="efu-Bg-2wB" customClass="AddTaskViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddTaskViewController" id="efu-Bg-2wB" customClass="ItemDetailViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="fNQ-hS-Pfi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
                             <tableViewSection id="ViG-tb-o3k">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="40" id="2IU-xY-Izj">
-                                        <rect key="frame" x="0.0" y="18" width="375" height="40"/>
+                                        <rect key="frame" x="0.0" y="18" width="390" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2IU-xY-Izj" id="V3s-pt-pda">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4w0-RV-lnO">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="40"/>
+                                                    <rect key="frame" x="16" y="0.0" width="358" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 </textField>
@@ -119,10 +117,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NQp-T7-OHd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="EVz-ee-zhw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <navigationBarAppearance key="standardAppearance"/>
-                        <navigationBarAppearance key="scrollEdgeAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
