@@ -74,6 +74,5 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             item.text = textFieldOutlet.text!
             delegate?.ItemDetailViewController(self, didFinishAdding: item)
         }
-//        navigationController?.popViewController(animated: true)
     }
 }
